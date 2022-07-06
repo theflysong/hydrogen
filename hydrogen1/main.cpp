@@ -1,12 +1,14 @@
+#include <hylex.h>
 #include <iostream>
-#include "hylex.h"
+
 
 int main(int argc, const char **argv) {
-    initLexer();
-    std::string str;
-    std::getline(std::cin, str);
-    auto tokens = lex(str);
-    for (auto tok : tokens)
-        std::cout << "(" << (int)tok.type << ":" << tok.token << ")";
+    using namespace hydrogen;
+
+    Lexer lexer(std::cin);
+
+    Token token = lexer.LexOnce();
+
+    std::cout << ToString(token.type) << ":" << token.value << std::endl;
     return 0;
 }

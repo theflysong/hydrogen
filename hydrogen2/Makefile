@@ -1,12 +1,11 @@
-OBJECTDIR := $(OBJECTDIR)/hydrogen1
+OBJECTDIR := $(OBJECTDIR)/hydrogen2
 
-APPNAME := $(BASENAME)1
-_OBJECTS := main hylex
+APPNAME := $(BASENAME)2
+_OBJECTS := main
 OBJECTS := $(foreach obj, $(_OBJECTS), $(OBJECTDIR)/$(obj).o)
-CPPINCLUDE := -I"$(ROOTDIR)/hydrogen1"
+CPPINCLUDE := -I"$(ROOTDIR)/hydrogen2"
 
-$(OBJECTDIR)/%.o : %.cpp
-	echo $(OBJECTDIR)
+$(OBJECTDIR)/%.o : $(SRCDIR)/%.cpp
 	$(MKDIR) $(dir $@)
 	$(CPPC) $(CPPFLAGS) $(CPPDEFINES) $(CPPINCLUDE) -c -o $@ $^
 
